@@ -1,0 +1,17 @@
+body {
+  padding: 50px;
+  font: 14px Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.error {
+  font-size: 150%;
+  color: #a00;
+}
+
+.small-button {
+  font-size: 75%;
+}

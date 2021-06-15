@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <img src="/img/title.jpg" style="width: 20%; height: auto;">
+    <h1><%= title %></h1>
+    <% if(auth.loggedIn) { %>
+      <h3>Welcome back <%= auth.username %>&nbsp;&nbsp;
+        <% if(auth.admin === 1) { %>
+          <a class="small-button" href="/admin">[admin]</a>&nbsp;&nbsp;
+        <% } %>
+        <a class="small-button" href="/users/logout">[log out]</a>
+      </h3>
+    <% } else { %>
+      <h3><a class="small-button" href="/users/login">[sign in]</a></h3>
+    <% } %>
+    <br/>
+    <form action="/posts" method="POST">
+      <textarea rows="10" cols="40" name="comment" placeholder="Type your message"></textarea><input type="submit" value="Post message"/>
+    </form>
+
+    <% for(const post of posts) { %>
+      <div>
+        <% if (post.admin === 1) { %>
+        ⭐
+        <% } %>
+        <b><%= post.username %></b><br/>
+        <%- post.comment -%>
+        <br/><br/>
+      </div>
+    <% } %>
+  </body>
+</html>
